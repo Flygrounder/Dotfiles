@@ -192,59 +192,59 @@
       opts = { number = true; };
       keymaps = [
         {
-          action = "<cmd>Telescope projects<CR>";
+          action = "<cmd>Telescope projects<cr>";
           key = "<leader>sp";
         }
         {
-          action = "<cmd>Oil<CR>";
+          action = "<cmd>Oil<cr>";
           key = "<leader>o";
         }
         {
-          action = "<cmd>Oil<CR>";
+          action = "<cmd>Oil<cr>";
           key = "<leader>o";
         }
         {
-          action = "<cmd>lua require('harpoon.mark').add_file()<CR>";
+          action = "<cmd>lua require('harpoon.mark').add_file()<cr>";
           key = "<leader>k";
         }
         {
-          action = "<cmd>lua require('harpoon.ui').toggle_quick_menu()<CR>";
+          action = "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>";
           key = "<leader>j";
         }
         {
-          action = "<cmd>lua require('harpoon.ui').nav_file(1)<CR>";
+          action = "<cmd>lua require('harpoon.ui').nav_file(1)<cr>";
           key = "<M-q>";
         }
         {
-          action = "<cmd>lua require('harpoon.ui').nav_file(2)<CR>";
+          action = "<cmd>lua require('harpoon.ui').nav_file(2)<cr>";
           key = "<M-w>";
         }
         {
-          action = "<cmd>lua require('harpoon.ui').nav_file(3)<CR>";
+          action = "<cmd>lua require('harpoon.ui').nav_file(3)<cr>";
           key = "<M-e>";
         }
         {
-          action = "<cmd>lua require('harpoon.ui').nav_file(4)<CR>";
+          action = "<cmd>lua require('harpoon.ui').nav_file(4)<cr>";
           key = "<M-r>";
         }
         {
-          action = "<cmd>Telescope find_files<CR>";
+          action = "<cmd>Telescope find_files<cr>";
           key = "<leader>sf";
         }
         {
-          action = "<cmd>Telescope live_grep<CR>";
+          action = "<cmd>Telescope live_grep<cr>";
           key = "<leader>sg";
         }
         {
-          action = "<cmd>Telescope help_tags<CR>";
+          action = "<cmd>Telescope help_tags<cr>";
           key = "<leader>sh";
         }
         {
-          action = "<cmd>Telescope lsp_dynamic_workspace_symbols<CR>";
+          action = "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>";
           key = "<leader>ss";
         }
         {
-          action = "<cmd>TroubleToggle<CR>";
+          action = "<cmd>TroubleToggle<cr>";
           key = "<leader>q";
         }
       ];
@@ -273,7 +273,7 @@
             mapping = {
               "<C-n>" = "cmp.mapping.select_next_item()";
               "<C-p>" = "cmp.mapping.select_prev_item()";
-              "<CR>" = "cmp.mapping.confirm({ select = true })";
+              "<cr>" = "cmp.mapping.confirm({ select = true })";
             };
           };
         };
@@ -297,13 +297,24 @@
           keymaps = {
             silent = true;
             lspBuf = {
-              gd = "definition";
-              gD = "references";
-              gt = "type_definition";
               K = "hover";
               "<leader>r" = "rename";
               "<leader>i" = "format";
             };
+            extra = [
+              {
+                action = "<cmd>Telescope lsp_definitions<cr>";
+                key = "gd";
+              }
+              {
+                action = "<cmd>Telescope lsp_type_definitions<cr>";
+                key = "gt";
+              }
+              {
+                action = "<cmd>Telescope lsp_references<cr>";
+                key = "gD";
+              }
+            ];
           };
         };
         project-nvim = {
