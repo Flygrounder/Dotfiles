@@ -8,6 +8,7 @@
   imports = with lib; [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
     (mkAliasOptionModule [ "my" ] [ "home-manager" "users" "flygrounder" ])
+    (mkAliasOptionModule [ "dad" ] [ "home-manager" "users" "dmitry" ])
   ];
 
   security.sudo.wheelNeedsPassword = false;
@@ -49,7 +50,7 @@
   services.xserver.enable = true;
 
   # Enable the KDE Plasma Desktop Environment.
-  services.displayManager.sddm.enable = true;
+  services.displayManager.cosmic-greeter.enable = true;
   services.desktopManager.plasma6.enable = true;
   services.desktopManager.cosmic.enable = true;
 
@@ -82,14 +83,20 @@
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.flygrounder = {
-    isNormalUser = true;
-    description = "Artyom";
-    extraGroups = [ "networkmanager" "wheel" ];
-    shell = pkgs.fish;
+  users.users = {
+    flygrounder = {
+      isNormalUser = true;
+      description = "Артём";
+      extraGroups = [ "networkmanager" "wheel" "docker" ];
+      shell = pkgs.fish;
+    };
+    dmitry = {
+      isNormalUser = true;
+      description = "Дмитрий";
+      extraGroups = [ "networkmanager" ];
+    };
   };
 
-  programs.firefox.enable = true;
   programs.fish.enable = true;
   programs.direnv.enable = true;
 
@@ -98,11 +105,12 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs;
-    [
-      vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-      #  wget
-    ];
+  environment.systemPackages = with pkgs; [
+    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    #  wget
+    hplipWithPlugin
+  ];
+  services.printing.drivers = [ pkgs.hplipWithPlugin ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -121,7 +129,7 @@
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+  networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
@@ -174,6 +182,7 @@
     packages = with pkgs; [
       appflowy
       telegram-desktop
+      libreoffice-still
       git
       fira-code-nerdfont
       wl-clipboard
@@ -182,7 +191,14 @@
       zoom-us
       fastfetch
       bottom
+      firefox
     ];
+  };
+  dad.home = {
+    username = "dmitry";
+    homeDirectory = "/home/dmitry";
+    stateVersion = "24.05";
+    packages = with pkgs; [ firefox libreoffice-still ];
   };
   my.programs = {
     nixvim = {
