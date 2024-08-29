@@ -172,6 +172,7 @@
     homeDirectory = "/home/flygrounder";
     stateVersion = "24.05";
     packages = with pkgs; [
+      appflowy
       telegram-desktop
       git
       fira-code-nerdfont
@@ -247,8 +248,19 @@
           action = "<cmd>TroubleToggle<cr>";
           key = "<leader>q";
         }
+        {
+          action = "<cmd>lua vim.diagnostic.goto_next()<cr>";
+          key = "]d";
+        }
+        {
+          action = "<cmd>lua vim.diagnostic.goto_prev()<cr>";
+          key = "[d";
+        }
       ];
       plugins = {
+        autoclose.enable = true;
+        ts-autotag.enable = true;
+        treesitter.enable = true;
         trouble.enable = true;
         oil.enable = true;
         lsp-format.enable = true;
