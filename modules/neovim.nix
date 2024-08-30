@@ -86,6 +86,7 @@
           }
         ];
         plugins = {
+          comment.enable = true;
           autoclose.enable = true;
           ts-autotag.enable = true;
           treesitter.enable = true;
