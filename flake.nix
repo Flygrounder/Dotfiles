@@ -38,6 +38,8 @@
             ./hosts/${host}/configuration.nix
           ];
         };
-    in { desktop = mkSystem "desktop"; };
+    in { desktop = mkSystem "desktop"; 
+laptop = mkSystem "laptop"; 
+};
   };
 }

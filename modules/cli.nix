@@ -2,8 +2,13 @@
   options = { custom.cli.enable = lib.mkEnableOption "Enable CLI module"; };
   config = lib.mkIf config.custom.cli.enable {
     my = {
-      home.packages = with pkgs; [ git fastfetch bottom ];
+      home.packages = with pkgs; [ fastfetch bottom ];
       programs = {
+        git = {
+          enable = true;
+          userEmail = "flygrounder@yandex.ru";
+          userName = "Artyom Belousov";
+        };
         starship.enable = true;
         fish = {
           enable = true;
