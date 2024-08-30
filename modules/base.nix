@@ -10,12 +10,18 @@
       shell = pkgs.fish;
     };
     security.sudo.wheelNeedsPassword = false;
+    security.polkit.enable = true;
     my = {
       home = {
         username = "flygrounder";
         homeDirectory = "/home/flygrounder";
         stateVersion = "24.05";
-        packages = with pkgs; [ telegram-desktop libreoffice-still firefox ];
+        packages = with pkgs; [
+          telegram-desktop
+          libreoffice-still
+          firefox
+          popsicle
+        ];
       };
       programs.home-manager.enable = true;
     };

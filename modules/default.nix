@@ -1,3 +1,10 @@
 { ... }: {
-  imports = [ ./neovim.nix ./nvidia.nix ./base.nix ./hp-printer.nix ./cli.nix ];
+  imports = [
+    ./neovim.nix
+    ./nvidia.nix
+    ./base.nix
+    ./hp-printer.nix
+    ./cli.nix
+    ./gaming.nix
+  ];
 }

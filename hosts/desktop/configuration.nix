@@ -6,6 +6,7 @@
     description = "Дмитрий";
     extraGroups = [ "networkmanager" ];
   };
+  services.desktopManager.plasma6.enable = true;
   home-manager.users.dmitry.home = {
     username = "dmitry";
     homeDirectory = "/home/dmitry";
@@ -14,9 +15,10 @@
   };
   custom = {
     base.enable = true;
+    cli.enable = true;
+    gaming.enable = true;
     hp-printer.enable = true;
     neovim.enable = true;
     nvidia.enable = true;
-    cli.enable = true;
   };
 }
