@@ -1,5 +1,5 @@
 { pkgs, ... }: {
-  imports = [ ../../modules ./hardware-configuration.nix ];
+  imports = [ ./hardware-configuration.nix ];
   networking.hostName = "desktop";
   users.users.dmitry = {
     isNormalUser = true;
@@ -14,7 +14,7 @@
     packages = with pkgs; [ firefox libreoffice-still ];
   };
   custom = {
-    base.enable = true;
+    desktop.enable = true;
     cli.enable = true;
     gaming.enable = true;
     hp-printer.enable = true;

@@ -134,6 +134,7 @@
                 settings.formatting.command = [ "nixfmt" ];
               };
               tsserver.enable = true;
+              yamlls.enable = true;
             };
             keymaps = {
               silent = true;
@@ -164,7 +165,9 @@
             detectionMethods = [ "pattern" ];
             patterns = [ ".git" ".project" ];
           };
+          surround.enable = true;
           telescope.enable = true;
+          gitsigns.enable = true;
         };
       };
     };

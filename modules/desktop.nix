@@ -1,34 +1,21 @@
 { pkgs, lib, config, ... }: {
-  imports = with lib;
-    [ (mkAliasOptionModule [ "my" ] [ "home-manager" "users" "flygrounder" ]) ];
-  options = { custom.base.enable = lib.mkEnableOption "Enable base module"; };
-  config = lib.mkIf config.custom.base.enable {
+  options = {
+    custom.desktop.enable = lib.mkEnableOption "Enable desktop module";
+  };
+  config = lib.mkIf config.custom.desktop.enable {
     users.users.flygrounder = {
       isNormalUser = true;
       description = "Артём";
       extraGroups = [ "networkmanager" "wheel" "docker" ];
-      shell = pkgs.fish;
     };
     security.sudo.wheelNeedsPassword = false;
     security.polkit.enable = true;
-    my = {
-      home = {
-        username = "flygrounder";
-        homeDirectory = "/home/flygrounder";
-        stateVersion = "24.05";
-        packages = with pkgs; [
-          telegram-desktop
-          libreoffice-still
-          firefox
-          popsicle
-        ];
-      };
-      programs.home-manager.enable = true;
-    };
-    programs = {
-      fish.enable = true;
-      direnv.enable = true;
-    };
+    my.home.packages = with pkgs; [
+      telegram-desktop
+      libreoffice-still
+      firefox
+      popsicle
+    ];
     services = {
       xserver.enable = true;
       displayManager.cosmic-greeter.enable = true;

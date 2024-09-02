@@ -2,7 +2,7 @@
   imports = [
     ./neovim.nix
     ./nvidia.nix
-    ./base.nix
+    ./desktop.nix
     ./hp-printer.nix
     ./cli.nix
     ./gaming.nix

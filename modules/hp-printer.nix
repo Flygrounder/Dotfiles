@@ -4,7 +4,7 @@
   };
   config = lib.mkIf config.custom.hp-printer.enable {
     services.printing.enable = true;
-    environment.systemPackages = with pkgs; [ vim hplipWithPlugin ];
+    environment.systemPackages = with pkgs; [ hplipWithPlugin ];
     services.printing.drivers = [ pkgs.hplipWithPlugin ];
   };
 }

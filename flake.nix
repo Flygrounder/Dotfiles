@@ -14,32 +14,64 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = { nixpkgs, home-manager, nixos-cosmic, nixvim, ... }: {
-    nixosConfigurations = let
-      mkSystem = host:
-        nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = [
-            {
-              nix.settings = {
-                substituters = [ "https://cosmic.cachix.org/" ];
-                trusted-public-keys = [
-                  "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="
-                ];
-              };
-            }
-            nixos-cosmic.nixosModules.default
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.sharedModules = [ nixvim.homeManagerModules.nixvim ];
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-            }
-            ./hosts/${host}/configuration.nix
+  outputs = { nixpkgs, home-manager, nixos-cosmic, nixvim, ... }@inputs:
+    let
+      system = "x86_64-linux";
+      extraModules = [
+        home-manager.nixosModules.home-manager
+        {
+          nix.settings = {
+            substituters = [ "https://cosmic.cachix.org/" ];
+            trusted-public-keys = [
+              "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="
+            ];
+          };
+        }
+        nixos-cosmic.nixosModules.default
+        ({ lib, ... }: {
+          imports = [
+            (lib.mkAliasOptionModule [ "my" ] [
+              "home-manager"
+              "users"
+              "flygrounder"
+            ])
           ];
+          home-manager = {
+            sharedModules = [ nixvim.homeManagerModules.nixvim ];
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            users.flygrounder = {
+              programs.home-manager.enable = true;
+              home = {
+                username = "flygrounder";
+                homeDirectory = "/home/flygrounder";
+                stateVersion = "24.05";
+              };
+            };
+          };
+        })
+        ./modules
+      ];
+    in {
+      nixosConfigurations = let
+        mkSystem = host:
+          nixpkgs.lib.nixosSystem {
+            inherit system;
+            modules = extraModules ++ [ ./hosts/${host}/configuration.nix ];
+          };
+      in {
+        desktop = mkSystem "desktop";
+        laptop = mkSystem "laptop";
+      };
+      colmena = {
+        meta = {
+          nixpkgs = import nixpkgs { inherit system; };
+          specialArgs = { inherit extraModules; };
         };
-    in { desktop = mkSystem "desktop"; 
-laptop = mkSystem "laptop"; 
-};
-  };
+        server = import ./hosts/server/configuration.nix;
+      };
+      devShells.${system}.default =
+        let pkgs = import nixpkgs { inherit system; };
+        in with pkgs; mkShell { buildInputs = [ colmena ]; };
+    };
 }

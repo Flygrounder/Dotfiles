@@ -6,6 +6,7 @@
       programs = {
         git = {
           enable = true;
+          extraConfig = { credential.helper = "store"; };
           userEmail = "flygrounder@yandex.ru";
           userName = "Artyom Belousov";
         };
@@ -20,6 +21,11 @@
         eza.enable = true;
         bat.enable = true;
       };
+    };
+    users.users.flygrounder.shell = pkgs.fish;
+    programs = {
+      fish.enable = true;
+      direnv.enable = true;
     };
   };
 }
