@@ -13,8 +13,12 @@
       url = "github:nix-community/nixvim/nixos-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    arion = {
+      url = "github:hercules-ci/arion";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
-  outputs = { nixpkgs, home-manager, nixos-cosmic, nixvim, ... }@inputs:
+  outputs = { nixpkgs, home-manager, nixos-cosmic, nixvim, arion, ... }:
     let
       system = "x86_64-linux";
       extraModules = [
@@ -50,6 +54,7 @@
             };
           };
         })
+        arion.nixosModules.arion
         ./modules
       ];
     in {

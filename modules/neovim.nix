@@ -7,12 +7,26 @@
         nixfmt-classic
         wl-clipboard
         ripgrep
+        luajitPackages.lua-utils-nvim
       ];
       programs.nixvim = {
         enable = true;
         globals.mapleader = " ";
         clipboard.register = "unnamedplus";
         colorschemes.catppuccin.enable = true;
+        extraPlugins = [
+          (pkgs.vimUtils.buildVimPlugin {
+            inherit (pkgs.luaPackages.lua-utils-nvim) pname version src;
+          })
+
+          (pkgs.vimUtils.buildVimPlugin {
+            inherit (pkgs.luaPackages.pathlib-nvim) pname version src;
+          })
+
+          (pkgs.vimUtils.buildVimPlugin {
+            inherit (pkgs.luaPackages.nvim-nio) pname version src;
+          })
+        ];
         opts = {
           number = true;
           ignorecase = true;
@@ -84,9 +98,29 @@
             action = "<cmd>lua vim.diagnostic.goto_prev()<cr>";
             key = "[d";
           }
+          {
+            action = "<cmd>Neorg index<cr>";
+            key = "<leader>ww";
+          }
+          {
+            action = "<cmd>Neorg return<cr>";
+            key = "<leader>we";
+          }
         ];
         plugins = {
           comment.enable = true;
+          neorg = {
+            enable = true;
+            modules = {
+              "core.defaults" = { __empty = null; };
+              "core.dirman" = {
+                config = {
+                  workspaces = { notes = "~/notes"; };
+                  default_workspace = "notes";
+                };
+              };
+            };
+          };
           autoclose.enable = true;
           ts-autotag.enable = true;
           treesitter.enable = true;
