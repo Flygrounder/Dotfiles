@@ -8,6 +8,7 @@
         wl-clipboard
         ripgrep
         luajitPackages.lua-utils-nvim
+        sqlfluff
       ];
       programs.nixvim = {
         enable = true;
@@ -108,6 +109,20 @@
           }
         ];
         plugins = {
+          none-ls = {
+            enable = true;
+            sources = {
+              formatting = {
+                sqlfluff = {
+                  enable = true;
+                  withArgs = ''{ extra_args = { "--dialect", "postgres" }, }'';
+                };
+              };
+            };
+            extraOptions = {
+
+            };
+          };
           comment.enable = true;
           neorg = {
             enable = true;
@@ -175,7 +190,6 @@
               lspBuf = {
                 K = "hover";
                 "<leader>r" = "rename";
-                "<leader>i" = "format";
               };
               extra = [
                 {
@@ -189,6 +203,11 @@
                 {
                   action = "<cmd>Telescope lsp_references<cr>";
                   key = "gD";
+                }
+                {
+                  action =
+                    "<cmd>lua vim.lsp.buf.format({ timeout_ms = 5000 })<cr>";
+                  key = "<leader>i";
                 }
               ];
             };
