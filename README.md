@@ -1,7 +1,5 @@
 # flygrounder's dotfiles
 
-![Screenshot](./Screenshot.png)
-
 |               |                    |
 |---------------|--------------------|
 | OS            | NixOS              |
@@ -13,3 +11,4 @@
 | Editor        | Neovim             |
 | Editor theme  | Catppuccin         |
 
+![Screenshot](./Screenshot.png)
