@@ -11,6 +11,7 @@
     security.sudo.wheelNeedsPassword = false;
     security.polkit.enable = true;
     my.home.packages = with pkgs; [
+      jetbrains.idea-community
       telegram-desktop
       libreoffice-still
       firefox
