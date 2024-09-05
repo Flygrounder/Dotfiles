@@ -14,7 +14,11 @@
         fish = {
           enable = true;
           functions = { fish_greeting = ""; };
-          shellAliases = { lg = "lazygit"; };
+          shellAliases = {
+            lg = "lazygit";
+            hf =
+              "git add -N flake.nix flake.lock && git update-index --assume-unchanged flake.nix flake.lock";
+          };
         };
         zoxide.enable = true;
         lazygit.enable = true;
