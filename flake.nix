@@ -67,6 +67,7 @@
       in {
         desktop = mkSystem "desktop";
         laptop = mkSystem "laptop";
+        work = mkSystem "work";
       };
       colmena = {
         meta = {
