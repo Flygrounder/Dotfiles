@@ -1,0 +1,5 @@
+@import url("/home/flygrounder/.config/waybar/catppuccin.css");
+
+* {
+	font-family: "Roboto Medium", "Font Awesome 6 Free Solid", "Font Awesome 6 Brands";
+}

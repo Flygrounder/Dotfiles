@@ -1,6 +1,7 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
+    catppuccin.url = "github:catppuccin/nix";
     home-manager = {
       url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -18,10 +19,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = { nixpkgs, home-manager, nixos-cosmic, nixvim, arion, ... }:
+  outputs =
+    { nixpkgs, home-manager, nixos-cosmic, nixvim, arion, catppuccin, ... }:
     let
       system = "x86_64-linux";
       extraModules = [
+        catppuccin.nixosModules.catppuccin
         home-manager.nixosModules.home-manager
         {
           nix.settings = {
@@ -41,7 +44,10 @@
             ])
           ];
           home-manager = {
-            sharedModules = [ nixvim.homeManagerModules.nixvim ];
+            sharedModules = [
+              nixvim.homeManagerModules.nixvim
+              catppuccin.homeManagerModules.catppuccin
+            ];
             useGlobalPkgs = true;
             useUserPackages = true;
             users.flygrounder = {

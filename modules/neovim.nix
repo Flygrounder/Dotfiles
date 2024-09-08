@@ -32,7 +32,7 @@
           number = true;
           ignorecase = true;
           smartcase = true;
-          swapfile = true;
+          swapfile = false;
         };
         keymaps = [
           {
@@ -173,6 +173,8 @@
           lsp = {
             enable = true;
             servers = {
+              biome.enable = true;
+              cssls.enable = true;
               rust-analyzer = {
                 enable = true;
                 installCargo = false;
