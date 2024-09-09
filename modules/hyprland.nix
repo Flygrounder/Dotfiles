@@ -4,10 +4,17 @@
   };
   config = lib.mkIf config.custom.hyprland.enable {
     my.home.packages = with pkgs; [ roboto font-awesome ];
+    my.services.network-manager-applet.enable = true;
+    services.xserver.displayManager.lightdm.enable = false;
+    networking.networkmanager.enable = true;
     my.programs.rofi = {
       enable = true;
       package = pkgs.rofi-wayland;
+      catppuccin.flavor = "macchiato";
     };
+    services.getty.autologinUser = "flygrounder";
+    my.gtk.enable = true;
+    my.services.dunst.enable = true;
     my.wayland.windowManager.hyprland = {
       enable = true;
       settings = {
@@ -19,6 +26,7 @@
           "col.active_border" = "$overlay2";
           "col.inactive_border" = "$overlay0";
         };
+        decoration = { rounding = 15; };
         input = {
           kb_layout = "us,ru";
           kb_options = "grp:alt_shift_toggle";
@@ -31,7 +39,7 @@
               [ ]
             else
               let
-                wsKey = toString (wsNumber - wsNumber / 10 * 10);
+                wsKey = toString (if wsNumber == 10 then 0 else wsNumber);
                 ws = toString wsNumber;
               in [
                 "$mainMod, ${wsKey}, workspace, ${ws}"
@@ -46,7 +54,7 @@
           "$mainMod, J, cyclenext, "
           "$mainMod, k, cyclenext, prev"
           "$mainMod SHIFT, J, swapnext, "
-          "$mainMod SHIFT, k, swapnext, prev"
+          "$mainMod SHIFT, K, swapnext, prev"
         ] ++ wsKeys;
       };
     };
@@ -116,5 +124,6 @@
           wallpaper = ", ${wallpaperPath}";
         };
     };
+    environment.sessionVariables.NIXOS_OZONE_WL = "1";
   };
 }

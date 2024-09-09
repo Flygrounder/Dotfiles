@@ -1,7 +1,8 @@
 @import url("/home/flygrounder/.config/waybar/catppuccin.css");
 
 * {
-	font-family: "Roboto Medium", "Font Awesome 6 Free Solid", "Font Awesome 6 Brands", "FiraCode Nerd Font";
+	font-family: "Roboto", "Font Awesome 6 Free Solid", "Font Awesome 6 Brands", "FiraCode Nerd Font";
+	font-weight: bold;
 }
 
 window#waybar {
@@ -14,11 +15,11 @@ window#waybar {
 	color: @text;
 }
 
-button:hover {
-	box-shadow: inherit;
+#workspaces button:hover {
 	text-shadow: inherit;
 	background: transparent;
 	border: transparent;
+	box-shadow: inherit;
 }
 
 window#waybar.empty .modules-center {
@@ -47,13 +48,16 @@ label.module {
 #workspaces {
 	background-color: @surface1;
 	border-radius: 15px;
-	padding-left: 15px;
-	padding-right: 15px;
 }
 
 #workspaces button {
-	padding-right: 5px;
-	padding-left: 5px;
+	padding: 5px;
+	min-width: 25px;
+	border-radius: 15px;
+}
+
+#workspaces button.active {
+	background-color: @overlay1;
 }
 
 #custom-logo {

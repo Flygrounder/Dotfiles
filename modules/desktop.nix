@@ -18,11 +18,23 @@
     ];
     services = { xserver.enable = true; };
     nixpkgs.config.allowUnfree = true;
-    services.xserver.displayManager.lightdm.enable = true;
-    my.programs.kitty.enable = true;
+    my.programs.kitty = {
+      enable = true;
+      settings = {
+        tab_fade = 0;
+        confirm_os_window_close = 0;
+        window_padding_width = 10;
+        tab_bar_margin_height = "5 0";
+        tab_bar_margin_width = 0;
+        tab_title_template =
+          "{fmt.bg._080808}{fmt.fg._303030}{fmt.fg.default}{fmt.bg._303030}{fmt.fg._c6c6c6} {title} {fmt.fg.default}{fmt.bg.default}{fmt.fg._303030}{fmt.fg.default}";
+        active_tab_title_template =
+          "{fmt.bg._080808}{fmt.fg._80a0ff}{fmt.fg.default}{fmt.bg._80a0ff}{fmt.fg._080808} {title} {fmt.fg.default}{fmt.bg.default}{fmt.fg._80a0ff}{fmt.fg.default}";
+      };
+    };
     networking.firewall.enable = false;
     system.stateVersion = "24.05";
-    hardware.opengl = { enable = true; };
+    hardware.graphics.enable = true;
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
     virtualisation.docker.enable = true;
     time.timeZone = "Europe/Moscow";

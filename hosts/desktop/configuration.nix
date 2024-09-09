@@ -1,6 +1,7 @@
 { pkgs, ... }: {
   imports = [ ./hardware-configuration.nix ];
   networking.hostName = "desktop";
+  services.xserver.displayManager.lightdm.enable = true;
   users.users.dmitry = {
     isNormalUser = true;
     description = "Дмитрий";
