@@ -4,6 +4,7 @@
   imports = [ ./hardware-configuration.nix ];
   networking.hostName = "laptop";
   hardware.bluetooth.enable = true;
+  services.tlp.enable = true;
   custom = {
     desktop.enable = true;
     neovim.enable = true;
