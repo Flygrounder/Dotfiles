@@ -14,7 +14,6 @@
       jetbrains.idea-community
       telegram-desktop
       libreoffice-still
-      firefox
       brave
     ];
     services = { xserver.enable = true; };

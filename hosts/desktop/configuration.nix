@@ -11,7 +11,7 @@
     username = "dmitry";
     homeDirectory = "/home/dmitry";
     stateVersion = "24.05";
-    packages = with pkgs; [ firefox libreoffice-still ];
+    packages = with pkgs; [ brave libreoffice-still ];
   };
   custom = {
     desktop.enable = true;
