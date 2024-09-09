@@ -3,10 +3,11 @@
   config = lib.mkIf config.custom.neovim.enable {
     my = {
       home.packages = with pkgs; [
+        biome
         fira-code-nerdfont
         nixfmt-classic
         wl-clipboard
-	xclip
+        xclip
         ripgrep
         luajitPackages.lua-utils-nvim
         sqlfluff
@@ -110,21 +111,20 @@
           }
         ];
         plugins = {
-          none-ls = {
+          comment.enable = true;
+          conform-nvim = {
             enable = true;
-            sources = {
-              formatting = {
-                sqlfluff = {
-                  enable = true;
-                  withArgs = ''{ extra_args = { "--dialect", "postgres" }, }'';
-                };
+            settings = {
+              default_format_opts = { lsp_format = "fallback"; };
+              format_on_save = { lsp_format = "fallback"; };
+              formatters_by_ft = let jsConfig = { __unkeyed-1 = "biome"; };
+              in {
+                javascript = jsConfig;
+                typescript = jsConfig;
+                typescriptreact = jsConfig;
               };
             };
-            extraOptions = {
-
-            };
           };
-          comment.enable = true;
           neorg = {
             enable = true;
             modules = {
@@ -142,7 +142,6 @@
           treesitter.enable = true;
           trouble.enable = true;
           oil.enable = true;
-          lsp-format.enable = true;
           harpoon.enable = true;
           direnv.enable = true;
           cmp-nvim-lsp-signature-help.enable = true;
@@ -174,7 +173,6 @@
           lsp = {
             enable = true;
             servers = {
-              biome.enable = true;
               cssls.enable = true;
               rust-analyzer = {
                 enable = true;
@@ -208,8 +206,7 @@
                   key = "gD";
                 }
                 {
-                  action =
-                    "<cmd>lua vim.lsp.buf.format({ timeout_ms = 5000 })<cr>";
+                  action = "<cmd>lua require('conform').format({})<cr>";
                   key = "<leader>i";
                 }
               ];
@@ -218,8 +215,10 @@
           project-nvim = {
             enable = true;
             enableTelescope = true;
-            detectionMethods = [ "pattern" ];
-            patterns = [ ".git" ".project" ];
+            settings = {
+              detectionMethods = [ "pattern" ];
+              patterns = [ ".git" ".project" ];
+            };
           };
           surround.enable = true;
           telescope.enable = true;
