@@ -6,10 +6,6 @@
       url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixos-cosmic = {
-      url = "github:lilyinstarlight/nixos-cosmic";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     nixvim = {
       url = "github:nix-community/nixvim/nixos-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -19,22 +15,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs =
-    { nixpkgs, home-manager, nixos-cosmic, nixvim, arion, catppuccin, ... }:
+  outputs = { nixpkgs, home-manager, nixvim, arion, catppuccin, ... }:
     let
       system = "x86_64-linux";
       extraModules = [
         catppuccin.nixosModules.catppuccin
         home-manager.nixosModules.home-manager
-        {
-          nix.settings = {
-            substituters = [ "https://cosmic.cachix.org/" ];
-            trusted-public-keys = [
-              "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="
-            ];
-          };
-        }
-        nixos-cosmic.nixosModules.default
         ({ lib, ... }: {
           imports = [
             (lib.mkAliasOptionModule [ "my" ] [

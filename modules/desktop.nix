@@ -29,7 +29,9 @@
         general = {
           layout = "master";
           gaps_in = 5;
-          gaps_out = 5;
+          gaps_out = 10;
+          "col.active_border" = "$overlay2";
+          "col.inactive_border" = "$overlay0";
         };
         windowrulev2 =
           [ "workspace 1, class:(kitty)" "workspace 2, class:(firefox)" ];
@@ -37,10 +39,7 @@
           kb_layout = "us,ru";
           kb_options = "grp:alt_shift_toggle";
         };
-        master = {
-          mfact = 0.5;
-          no_gaps_when_only = 1;
-        };
+        master = { mfact = 0.5; };
         exec-once = [ "waybar" ];
         bind = let
           genWsKeysRec = wsNumber:
@@ -67,15 +66,13 @@
         ] ++ wsKeys;
       };
     };
-    services = {
-      xserver.enable = true;
-      displayManager.cosmic-greeter.enable = true;
-      desktopManager.cosmic.enable = true;
-    };
+    services = { xserver.enable = true; };
     my.catppuccin.enable = true;
     my.catppuccin.flavor = "mocha";
     nixpkgs.config.allowUnfree = true;
     programs.hyprland.enable = true;
+    programs.regreet.enable = true;
+    services.greetd.enable = true;
     my.programs.kitty.enable = true;
     my.programs.waybar = {
       enable = true;
@@ -83,11 +80,18 @@
       style = ../configs/waybar/style.css;
       settings = {
         mainBar = {
+          margin-top = 5;
           layer = "top";
-          modules-left = [ "hyprland/workspaces" ];
+          modules-left = [ "custom/logo" "hyprland/workspaces" ];
           modules-center = [ "hyprland/window" ];
-          modules-right =
-            [ "hyprland/language" "pulseaudio" "backlight" "battery" "clock" ];
+          modules-right = [
+            "tray"
+            "hyprland/language"
+            "pulseaudio"
+            "backlight"
+            "battery"
+            "clock"
+          ];
           "hyprland/workspaces" = {
             format = "{icon}";
             persistent-workspaces = { "*" = 6; };
@@ -100,6 +104,18 @@
               "6" = "";
             };
           };
+          clock = { format = " {:%H:%M}"; };
+          "custom/logo" = {
+            format = "";
+            class = "logo";
+          };
+          battery = {
+            format-discharging = "{icon} {capacity}% {time}";
+            format-charging = " {capacity}% {time}";
+            format-full = "{icon} {capacity}% {time}";
+            format-time = "{H}:{m}";
+            format-icons = [ "" "" "" "" "" ];
+          };
           pulseaudio = {
             format = "{icon} {volume}%";
             format-muted = "  {volume}%";
@@ -107,7 +123,7 @@
           };
           backlight = {
             format = "{icon} {percent}%";
-            states = [ "" "" "" "" "" ];
+            format-icons = [ "" "" "" "" "" ];
           };
           "hyprland/language" = {
             format = " {}";
