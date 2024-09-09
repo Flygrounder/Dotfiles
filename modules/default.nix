@@ -1,5 +1,7 @@
 { ... }: {
   imports = [
+    ./hyprland.nix
+    ./qtile.nix
     ./neovim.nix
     ./nvidia.nix
     ./desktop.nix

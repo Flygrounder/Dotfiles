@@ -6,6 +6,7 @@
         fira-code-nerdfont
         nixfmt-classic
         wl-clipboard
+	xclip
         ripgrep
         luajitPackages.lua-utils-nvim
         sqlfluff

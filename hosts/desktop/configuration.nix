@@ -20,5 +20,6 @@
     hp-printer.enable = true;
     neovim.enable = true;
     nvidia.enable = true;
+    qtile.enable = true;
   };
 }
