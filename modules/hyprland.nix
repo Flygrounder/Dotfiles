@@ -7,13 +7,55 @@
     my.services.network-manager-applet.enable = true;
     services.xserver.displayManager.lightdm.enable = false;
     networking.networkmanager.enable = true;
+    my.programs.hyprlock = {
+      enable = true;
+      settings = {
+
+        general = {
+          disable_loading_bar = true;
+          hide_cursor = true;
+          no_fade_in = false;
+        };
+
+        background =
+          [{ path = "/home/flygrounder/.wallpapers/nix-black.png"; }];
+
+        input-field = [{
+          size = "400, 50";
+          position = "0, -200";
+          monitor = "";
+          dots_center = true;
+          fade_on_empty = false;
+          font_color = "rgb(202, 211, 245)";
+          inner_color = "rgb(91, 96, 120)";
+          outer_color = "rgb(24, 25, 38)";
+          outline_thickness = 5;
+          placeholder_text =
+            "'<span foreground=\"##cad3f5\">Password...</span>'";
+          shadow_passes = 2;
+        }];
+
+      };
+    };
+    security.pam.services.hyprlock = { };
     my.programs.rofi = {
       enable = true;
       package = pkgs.rofi-wayland;
       catppuccin.flavor = "macchiato";
     };
     services.getty.autologinUser = "flygrounder";
-    my.gtk.enable = true;
+    my.gtk = {
+      enable = true;
+      theme = {
+        name = "catppuccin-mocha-blue-standard";
+        package = pkgs.catppuccin-gtk.override { variant = "mocha"; };
+      };
+      iconTheme = {
+        name = "Papirus-Dark";
+        package = pkgs.catppuccin-papirus-folders;
+      };
+    };
+    my.catppuccin.pointerCursor.enable = true;
     my.services.dunst.enable = true;
     my.wayland.windowManager.hyprland = {
       enable = true;
@@ -27,6 +69,7 @@
           "col.inactive_border" = "$overlay0";
         };
         xwayland = { force_zero_scaling = true; };
+        animation = [ "windows, 1, 10, default, slide" ];
         decoration = { rounding = 15; };
         input = {
           kb_layout = "us,ru";
@@ -58,6 +101,7 @@
           wsKeys = genWsKeysRec 10;
         in [
           "$mainMod, RETURN, exec, kitty"
+          "$mainMod, L, exec, hyprlock"
           "$mainMod SHIFT, Q, exit, "
           "$mainMod, D, exec, rofi -show combi -combi-modes 'drun,run' -modes combi"
           "$mainMod, Q, killactive, "
@@ -84,6 +128,7 @@
           layer = "top";
           modules-left = [ "custom/logo" "hyprland/workspaces" ];
           modules-center = [ "hyprland/window" ];
+          "hyprland/window" = { max-length = 50; };
           modules-right = [
             "tray"
             "hyprland/language"

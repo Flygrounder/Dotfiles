@@ -140,7 +140,13 @@
           autoclose.enable = true;
           ts-autotag.enable = true;
           treesitter.enable = true;
-          trouble.enable = true;
+          trouble = {
+            enable = true;
+            settings = {
+              warn_no_results = false;
+              open_no_results = true;
+            };
+          };
           oil.enable = true;
           harpoon.enable = true;
           direnv.enable = true;
