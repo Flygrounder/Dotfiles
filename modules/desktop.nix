@@ -15,6 +15,7 @@
       telegram-desktop
       libreoffice-still
       brave
+      zoom-us
     ];
     services = { xserver.enable = true; };
     nixpkgs.config.allowUnfree = true;
