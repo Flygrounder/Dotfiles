@@ -3,7 +3,7 @@
     custom.hyprland.enable = lib.mkEnableOption "Enable hyprland module";
   };
   config = lib.mkIf config.custom.hyprland.enable {
-    my.home.packages = with pkgs; [ roboto font-awesome ];
+    my.home.packages = with pkgs; [ roboto font-awesome slurp grim yazi ];
     my.services.network-manager-applet.enable = true;
     services.xserver.displayManager.lightdm.enable = false;
     networking.networkmanager.enable = true;
@@ -65,6 +65,9 @@
           "$mainMod, k, cyclenext, prev"
           "$mainMod SHIFT, J, swapnext, "
           "$mainMod SHIFT, K, swapnext, prev"
+          ", Print, exec, mkdir -p Изображения/Скриншоты && slurp | grim -g - - | wl-copy && wl-paste > ~/Изображения/Скриншоты/Screenshot-$(date +%F_%T).png | dunstify 'Сделан области сохранён' -t 1000"
+          "SHIFT, Print, exec, mkdir -p Изображения/Скриншоты && grim - | wl-copy && wl-paste > ~/Изображения/Скриншоты/Screenshot-$(date +%F_%T).png | dunstify 'Снимок всего экрана сохранён' -t 1000"
+
         ] ++ wsKeys;
       };
     };
