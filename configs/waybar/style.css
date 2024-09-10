@@ -16,10 +16,11 @@ window#waybar {
 }
 
 #workspaces button:hover {
-	text-shadow: inherit;
-	background: transparent;
-	border: transparent;
-	box-shadow: inherit;
+	box-shadow: none;
+	text-shadow: none;
+	background: none;
+	transition: none;
+	border-color: transparent;
 }
 
 window#waybar.empty .modules-center {

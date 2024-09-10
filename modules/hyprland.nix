@@ -31,7 +31,9 @@
         input = {
           kb_layout = "us,ru";
           kb_options = "grp:alt_shift_toggle";
+          touchpad = { natural_scroll = true; };
         };
+        gestures = { workspace_swipe = true; };
         master = { mfact = 0.5; };
         exec-once = [ "waybar" ];
         bind = let
