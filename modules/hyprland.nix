@@ -26,6 +26,7 @@
           "col.active_border" = "$overlay2";
           "col.inactive_border" = "$overlay0";
         };
+        xwayland = { force_zero_scaling = true; };
         decoration = { rounding = 15; };
         input = {
           kb_layout = "us,ru";
