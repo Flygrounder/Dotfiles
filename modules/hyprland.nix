@@ -36,6 +36,13 @@
         gestures = { workspace_swipe = true; };
         master = { mfact = 0.5; };
         exec-once = [ "waybar" ];
+        bindel = [
+          ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
+          ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+          ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+          ", XF86MonBrightnessUp, exec, light -A 10"
+          ", XF86MonBrightnessDown, exec, light -U 10"
+        ];
         bind = let
           genWsKeysRec = wsNumber:
             if wsNumber < 0 then

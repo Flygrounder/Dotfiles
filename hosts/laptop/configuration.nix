@@ -5,6 +5,7 @@
   networking.hostName = "laptop";
   hardware.bluetooth.enable = true;
   services.tlp.enable = true;
+  programs.light.enable = true;
   custom = {
     desktop.enable = true;
     neovim.enable = true;

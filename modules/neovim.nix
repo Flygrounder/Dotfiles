@@ -90,7 +90,7 @@
             key = "<leader>ss";
           }
           {
-            action = "<cmd>TroubleToggle<cr>";
+            action = "<cmd>Trouble diagnostics toggle<cr>";
             key = "<leader>q";
           }
           {
@@ -216,7 +216,7 @@
             enable = true;
             enableTelescope = true;
             settings = {
-              detectionMethods = [ "pattern" ];
+              detection_methods = [ "pattern" ];
               patterns = [ ".git" ".project" ];
             };
           };

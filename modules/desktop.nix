@@ -6,7 +6,7 @@
     users.users.flygrounder = {
       isNormalUser = true;
       description = "Артём";
-      extraGroups = [ "networkmanager" "wheel" "docker" ];
+      extraGroups = [ "networkmanager" "wheel" "docker" "video" ];
     };
     security.sudo.wheelNeedsPassword = false;
     security.polkit.enable = true;
