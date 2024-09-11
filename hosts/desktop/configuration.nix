@@ -1,7 +1,7 @@
 { pkgs, ... }: {
   imports = [ ./hardware-configuration.nix ];
   networking.hostName = "desktop";
-  services.xserver.displayManager.lightdm.enable = true;
+  services.displayManager.sddm.enable = true;
   users.users.dmitry = {
     isNormalUser = true;
     description = "Дмитрий";
@@ -21,6 +21,5 @@
     hp-printer.enable = true;
     neovim.enable = true;
     nvidia.enable = true;
-    qtile.enable = true;
   };
 }

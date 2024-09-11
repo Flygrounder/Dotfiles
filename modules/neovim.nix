@@ -14,6 +14,11 @@
       ];
       programs.nixvim = {
         enable = true;
+        autoCmd = [{
+          command = "set conceallevel=2";
+          event = [ "BufEnter" "BufWinEnter" ];
+          pattern = [ "*.norg" ];
+        }];
         globals.mapleader = " ";
         clipboard.register = "unnamedplus";
         colorschemes.catppuccin.enable = true;
@@ -123,6 +128,7 @@
                 typescript = jsConfig;
                 typescriptreact = jsConfig;
               };
+              formatters = { biome = { command = "biome"; }; };
             };
           };
           neorg = {
@@ -131,15 +137,24 @@
               "core.defaults" = { __empty = null; };
               "core.dirman" = {
                 config = {
-                  workspaces = { notes = "~/notes"; };
-                  default_workspace = "notes";
+                  workspaces = { org = "~/org"; };
+                  default_workspace = "org";
                 };
               };
+              "core.concealer" = { __empty = null; };
             };
           };
           autoclose.enable = true;
           ts-autotag.enable = true;
-          treesitter.enable = true;
+          treesitter = {
+            enable = true;
+            settings = {
+              highlight = {
+                enable = true;
+                additional_vim_regex_highlighting = false;
+              };
+            };
+          };
           trouble = {
             enable = true;
             settings = {
