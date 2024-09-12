@@ -3,12 +3,10 @@
 |               |                    |
 |---------------|--------------------|
 | OS            | NixOS              |
-| DE            | COSMIC             |
-| Terminal      | cosmic-term        |
-| Terminal font | FiraCode Nerd Font |
-| Shell         | fish               |
-| Shell prompt  | Starship           |
-| Editor        | Neovim             |
-| Editor theme  | Catppuccin         |
+| WM            | Hyprland           |
+| Bar           | Waybar             |
+| Terminal      | Kity               |
+| Widgets       | AGS                |
+| Theme         | Catppuccin         |
 
 ![Screenshot](./Screenshot.png)
