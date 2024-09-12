@@ -3,7 +3,7 @@
     custom.hyprland.enable = lib.mkEnableOption "Enable hyprland module";
   };
   config = lib.mkIf config.custom.hyprland.enable {
-    my.home.packages = with pkgs; [ roboto font-awesome slurp grim yazi ];
+    my.home.packages = with pkgs; [ roboto font-awesome slurp grim yazi ags ];
     my.services.network-manager-applet.enable = true;
     services.xserver.displayManager.lightdm.enable = false;
     networking.networkmanager.enable = true;
