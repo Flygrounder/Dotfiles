@@ -128,7 +128,7 @@
           layer = "top";
           modules-left = [ "custom/logo" "hyprland/workspaces" ];
           modules-center = [ "hyprland/window" ];
-          "hyprland/window" = { max-length = 50; };
+          "hyprland/window" = { max-length = 30; };
           modules-right = [
             "tray"
             "hyprland/language"
