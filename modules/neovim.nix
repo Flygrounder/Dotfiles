@@ -95,7 +95,7 @@
             key = "<leader>ss";
           }
           {
-            action = "<cmd>Trouble diagnostics toggle<cr>";
+            action = "<cmd>Trouble diagnostics focus<cr>";
             key = "<leader>q";
           }
           {
