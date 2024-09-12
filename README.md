@@ -5,7 +5,7 @@
 | OS            | NixOS              |
 | WM            | Hyprland           |
 | Bar           | Waybar             |
-| Terminal      | Kity               |
+| Terminal      | Kitty              |
 | Widgets       | AGS                |
 | Theme         | Catppuccin         |
 
