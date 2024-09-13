@@ -7,6 +7,12 @@
     my.services.network-manager-applet.enable = true;
     services.xserver.displayManager.lightdm.enable = false;
     networking.networkmanager.enable = true;
+    my.xdg.configFile = {
+      ags = {
+        source = ../configs/ags;
+        target = "ags";
+      };
+    };
     my.programs.hyprlock = {
       enable = true;
       settings = {
