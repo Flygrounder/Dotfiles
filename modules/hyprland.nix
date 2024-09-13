@@ -113,6 +113,8 @@
           "$mainMod, Q, killactive, "
           "$mainMod, J, cyclenext, "
           "$mainMod, k, cyclenext, prev"
+          "$mainMod SHIFT, m, fullscreen, 0"
+          "$mainMod, m, fullscreen, 1"
           "$mainMod SHIFT, J, swapnext, "
           "$mainMod SHIFT, K, swapnext, prev"
           ", Print, exec, mkdir -p Изображения/Скриншоты && slurp | grim -g - - | wl-copy && wl-paste > ~/Изображения/Скриншоты/Screenshot-$(date +%F_%T).png | dunstify 'Сделан области сохранён' -t 1000"
@@ -166,8 +168,8 @@
           };
           "hyprland/language" = {
             format = " {}";
-            format-en = "RU";
-            format-ru = "US";
+            format-en = "US";
+            format-ru = "RU";
           };
         };
       };

@@ -1,6 +1,12 @@
 { pkgs, ... }: {
   imports = [ ./hardware-configuration.nix ];
   networking.hostName = "work";
+  services.printing.enable = true;
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
+  };
   custom = {
     hyprland.enable = true;
     desktop.enable = true;
