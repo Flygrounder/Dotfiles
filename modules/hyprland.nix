@@ -84,7 +84,7 @@
         };
         gestures = { workspace_swipe = true; };
         master = { mfact = 0.5; };
-        exec-once = [ "waybar" ];
+        exec-once = [ "waybar" "ags" ];
         bindel = [
           ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
           ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
