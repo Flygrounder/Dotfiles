@@ -2,7 +2,7 @@
   options = { custom.cli.enable = lib.mkEnableOption "Enable CLI module"; };
   config = lib.mkIf config.custom.cli.enable {
     my = {
-      home.packages = with pkgs; [ fastfetch bottom ];
+      home.packages = with pkgs; [ fastfetch bottom unzip ];
       programs = {
         git = {
           enable = true;
