@@ -6,6 +6,8 @@
   hardware.bluetooth.enable = true;
   services.tlp.enable = true;
   programs.light.enable = true;
+  boot.initrd.kernelModules = [ "amdgpu" ];
+  services.xserver.videoDrivers = [ "amdgpu" ];
   custom = {
     desktop.enable = true;
     neovim.enable = true;
