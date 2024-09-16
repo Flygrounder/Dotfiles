@@ -1,7 +1,8 @@
 { pkgs, ... }: {
   imports = [ ./hardware-configuration.nix ];
   networking.hostName = "desktop";
-  services.displayManager.sddm.enable = true;
+  services.greetd.enable = true;
+  programs.regreet.enable = true;
   users.users.dmitry = {
     isNormalUser = true;
     description = "Дмитрий";
@@ -14,12 +15,14 @@
     stateVersion = "24.05";
     packages = with pkgs; [ brave libreoffice-still ];
   };
+  boot.initrd.kernelModules = [ "amdgpu" ];
+  services.xserver.videoDrivers = [ "amdgpu" ];
   custom = {
+    hyprland.enable = true;
     desktop.enable = true;
     cli.enable = true;
     gaming.enable = true;
     hp-printer.enable = true;
     neovim.enable = true;
-    nvidia.enable = true;
   };
 }

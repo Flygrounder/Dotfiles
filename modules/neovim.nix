@@ -20,6 +20,7 @@
           pattern = [ "*.norg" ];
         }];
         globals.mapleader = " ";
+        globals.maplocalleader = ",";
         clipboard.register = "unnamedplus";
         colorschemes.catppuccin.enable = true;
         extraPlugins = [
@@ -116,6 +117,7 @@
           }
         ];
         plugins = {
+          vimtex.enable = true;
           comment.enable = true;
           conform-nvim = {
             enable = true;
@@ -151,6 +153,7 @@
             settings = {
               highlight = {
                 enable = true;
+                disable = [ "latex" ];
                 additional_vim_regex_highlighting = false;
               };
             };

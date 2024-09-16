@@ -10,11 +10,13 @@
     };
     security.sudo.wheelNeedsPassword = false;
     security.polkit.enable = true;
+    services.gnome.gnome-keyring.enable = true;
     my.home.packages = with pkgs; [
-      jetbrains.idea-community
-      telegram-desktop
-      libreoffice-still
       brave
+      jetbrains.idea-community
+      libreoffice-still
+      telegram-desktop
+      nextcloud-client
       zoom-us
     ];
     services = { xserver.enable = true; };
