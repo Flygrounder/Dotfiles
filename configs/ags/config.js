@@ -126,7 +126,7 @@ const monitors = Widget.Box({
 });
 
 const window = Widget.Window({
-	layer: "background",
+	layer: "bottom",
 	name: "widgets",
 	margins: [150, 100],
 	anchor: ["right"],

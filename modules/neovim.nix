@@ -117,7 +117,7 @@
           }
         ];
         plugins = {
-          vimtex.enable = true;
+          # vimtex.enable = true;
           comment.enable = true;
           conform-nvim = {
             enable = true;

@@ -4,6 +4,12 @@
   };
   config = lib.mkIf config.custom.hyprland.enable {
     my.home.packages = with pkgs; [ roboto font-awesome slurp grim yazi ags ];
+
+    my.xdg.portal = with pkgs; {
+      enable = true;
+      extraPortals = [ xdg-desktop-portal-hyprland ];
+      configPackages = [ xdg-desktop-portal-hyprland ];
+    };
     my.services.network-manager-applet.enable = true;
     services.xserver.displayManager.lightdm.enable = false;
     networking.networkmanager.enable = true;
@@ -84,7 +90,7 @@
         };
         gestures = { workspace_swipe = true; };
         master = { mfact = 0.5; };
-        exec-once = [ "waybar" "ags" "nextcloud" ];
+        exec-once = [ "waybar" "nextcloud" "ags" ];
         bindel = [
           ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
           ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
