@@ -4,6 +4,9 @@
   imports = [ ./hardware-configuration.nix ];
   networking.hostName = "laptop";
   hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
+  services.blueman.enable = true;
+  my.services.blueman-applet.enable = true;
   services.tlp.enable = true;
   programs.light.enable = true;
   boot.initrd.kernelModules = [ "amdgpu" ];
