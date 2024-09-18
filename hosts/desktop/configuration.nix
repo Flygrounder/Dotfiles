@@ -3,6 +3,8 @@
   networking.hostName = "desktop";
   services.greetd.enable = true;
   programs.regreet.enable = true;
+  hardware.ledger.enable = true;
+  my.home.packages = with pkgs; [ ledger-live-desktop monero-gui ];
   users.users.dmitry = {
     isNormalUser = true;
     description = "Дмитрий";
@@ -13,7 +15,7 @@
     username = "dmitry";
     homeDirectory = "/home/dmitry";
     stateVersion = "24.05";
-    packages = with pkgs; [ brave libreoffice-still ];
+    packages = with pkgs; [ firefox libreoffice-still ];
   };
   boot.initrd.kernelModules = [ "amdgpu" ];
   services.xserver.videoDrivers = [ "amdgpu" ];

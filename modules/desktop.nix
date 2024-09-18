@@ -13,10 +13,11 @@
     services.gnome.gnome-keyring.enable = true;
     my.home.packages = with pkgs; [
       brave
+      firefox
       jetbrains.idea-community
       libreoffice-still
-      telegram-desktop
       nextcloud-client
+      telegram-desktop
       zoom-us
     ];
     services = { xserver.enable = true; };
