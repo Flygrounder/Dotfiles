@@ -203,6 +203,7 @@
             enable = true;
             servers = {
               cssls.enable = true;
+              pyright.enable = true;
               rust-analyzer = {
                 enable = true;
                 installCargo = false;
