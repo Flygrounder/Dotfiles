@@ -5,6 +5,7 @@
   config = lib.mkIf config.custom.hyprland.enable {
     my.home.packages = with pkgs; [ roboto font-awesome slurp grim yazi ags ];
 
+    my.services.udiskie.enable = true;
     my.xdg.portal = with pkgs; {
       enable = true;
       extraPortals = [ xdg-desktop-portal-hyprland ];

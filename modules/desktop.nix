@@ -18,10 +18,18 @@
       libreoffice-still
       nextcloud-client
       telegram-desktop
+      vlc
       zoom-us
     ];
     services = { xserver.enable = true; };
     nixpkgs.config.allowUnfree = true;
+    my.xdg.mimeApps = {
+      enable = true;
+      defaultApplications = {
+        "application/pdf" = [ "org.pwmt.zathura.desktop" ];
+      };
+    };
+    my.programs.zathura.enable = true;
     my.programs.kitty = {
       enable = true;
       settings = {

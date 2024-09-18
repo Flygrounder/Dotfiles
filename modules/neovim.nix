@@ -117,7 +117,11 @@
           }
         ];
         plugins = {
-          # vimtex.enable = true;
+          vimtex = {
+            enable = true;
+            texlivePackage = pkgs.texlive.combined.scheme-full;
+            settings = { view_method = "zathura"; };
+          };
           comment.enable = true;
           conform-nvim = {
             enable = true;
