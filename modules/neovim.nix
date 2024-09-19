@@ -204,6 +204,7 @@
             servers = {
               cssls.enable = true;
               pyright.enable = true;
+              gopls.enable = true;
               rust-analyzer = {
                 enable = true;
                 installCargo = false;
