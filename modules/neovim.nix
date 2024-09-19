@@ -213,6 +213,7 @@
                 enable = true;
                 settings.formatting.command = [ "nixfmt" ];
               };
+              clangd.enable = true;
               tsserver.enable = true;
               yamlls.enable = true;
             };
