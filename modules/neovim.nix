@@ -141,6 +141,8 @@
             enable = true;
             modules = {
               "core.defaults" = { __empty = null; };
+              "core.export" = { __empty = null; };
+              "core.export.markdown" = { __empty = null; };
               "core.dirman" = {
                 config = {
                   workspaces = { org = "~/org"; };
