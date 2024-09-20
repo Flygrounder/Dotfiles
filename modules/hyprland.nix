@@ -116,6 +116,7 @@
           "$mainMod, RETURN, exec, kitty"
           "$mainMod, O, exec, hyprlock"
           "$mainMod, L, focusmonitor, +1"
+          "$mainMod, N, workspace, empty"
           "$mainMod SHIFT, L, movewindow, mon:+1"
           "$mainMod, H, focusmonitor, -1"
           "$mainMod SHIFT, H, movewindow, mon:-1"
