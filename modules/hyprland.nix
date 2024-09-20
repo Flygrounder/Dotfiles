@@ -114,7 +114,11 @@
           wsKeys = genWsKeysRec 10;
         in [
           "$mainMod, RETURN, exec, kitty"
-          "$mainMod, L, exec, hyprlock"
+          "$mainMod, O, exec, hyprlock"
+          "$mainMod, L, focusmonitor, +1"
+          "$mainMod SHIFT, L, movewindow, mon:+1"
+          "$mainMod, H, focusmonitor, -1"
+          "$mainMod SHIFT, H, movewindow, mon:-1"
           "$mainMod SHIFT, Q, exit, "
           "$mainMod, D, exec, rofi -show combi -combi-modes 'drun,run' -modes combi"
           "$mainMod, Q, killactive, "
