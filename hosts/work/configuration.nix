@@ -1,6 +1,6 @@
 { pkgs, ... }: {
   imports = [ ./hardware-configuration.nix ];
-  networking.hostName = "work";
+  networking.hostName = "nora";
   services.printing.enable = true;
   services.avahi = {
     enable = true;
