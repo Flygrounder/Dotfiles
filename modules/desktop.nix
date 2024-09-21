@@ -19,7 +19,6 @@
       nextcloud-client
       telegram-desktop
       vlc
-      zoom-us
     ];
     services = { xserver.enable = true; };
     nixpkgs.config.allowUnfree = true;
