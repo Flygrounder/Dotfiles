@@ -41,6 +41,7 @@
           "{fmt.bg._080808}{fmt.fg._303030}{fmt.fg.default}{fmt.bg._303030}{fmt.fg._c6c6c6} {title} {fmt.fg.default}{fmt.bg.default}{fmt.fg._303030}{fmt.fg.default}";
         active_tab_title_template =
           "{fmt.bg._080808}{fmt.fg._80a0ff}{fmt.fg.default}{fmt.bg._80a0ff}{fmt.fg._080808} {title} {fmt.fg.default}{fmt.bg.default}{fmt.fg._80a0ff}{fmt.fg.default}";
+        font_family = "FiraCode Nerd Font";
       };
     };
     networking.firewall.enable = false;

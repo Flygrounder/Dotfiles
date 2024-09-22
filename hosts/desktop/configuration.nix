@@ -4,7 +4,7 @@
   services.greetd.enable = true;
   programs.regreet.enable = true;
   hardware.ledger.enable = true;
-  my.home.packages = with pkgs; [ ledger-live-desktop monero-gui monero-cli ];
+  my.home.packages = with pkgs; [ ledger-live-desktop monero-gui ];
   users.users.dmitry = {
     isNormalUser = true;
     description = "Дмитрий";
