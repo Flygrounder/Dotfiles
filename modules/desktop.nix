@@ -17,6 +17,7 @@
       jetbrains.idea-community
       libreoffice-still
       nextcloud-client
+      pavucontrol
       telegram-desktop
       vlc
     ];
