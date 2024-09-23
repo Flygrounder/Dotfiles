@@ -101,17 +101,15 @@
         ];
         bind = let
           genWsKeysRec = wsNumber:
-            if wsNumber < 0 then
+            if wsNumber < 1 then
               [ ]
             else
-              let
-                wsKey = toString (if wsNumber == 10 then 0 else wsNumber);
-                ws = toString wsNumber;
+              let ws = toString wsNumber;
               in [
-                "$mainMod, ${wsKey}, workspace, ${ws}"
-                "$mainMod SHIFT, ${wsKey}, movetoworkspace, ${ws}"
+                "$mainMod, ${ws}, workspace, ${ws}"
+                "$mainMod SHIFT, ${ws}, movetoworkspace, ${ws}"
               ] ++ genWsKeysRec ((wsNumber - 1));
-          wsKeys = genWsKeysRec 10;
+          wsKeys = genWsKeysRec 9;
         in [
           "$mainMod, RETURN, exec, kitty"
           "$mainMod, O, exec, hyprlock"
