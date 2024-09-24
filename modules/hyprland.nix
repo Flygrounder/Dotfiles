@@ -47,7 +47,6 @@
             "'<span foreground=\"##cad3f5\">Password...</span>'";
           shadow_passes = 2;
         }];
-
       };
     };
     security.pam.services.hyprlock = { };
@@ -74,6 +73,10 @@
       enable = true;
       settings = {
         "$mainMod" = "SUPER";
+        misc = {
+          disable_hyprland_logo = true;
+          disable_splash_rendering = true;
+        };
         general = {
           layout = "master";
           gaps_in = 5;
