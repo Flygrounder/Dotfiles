@@ -102,6 +102,7 @@
           ", XF86MonBrightnessUp, exec, light -A 10"
           ", XF86MonBrightnessDown, exec, light -U 10"
         ];
+        bindm = [ "SUPER, mouse:272, movewindow" ];
         bind = let
           genWsKeysRec = wsNumber:
             if wsNumber < 1 then
@@ -115,6 +116,7 @@
           wsKeys = genWsKeysRec 9;
         in [
           "$mainMod, RETURN, exec, kitty"
+          "$mainMod, w, togglefloating,"
           "$mainMod, O, exec, hyprlock"
           "$mainMod, L, focusmonitor, +1"
           "$mainMod, N, workspace, empty"
