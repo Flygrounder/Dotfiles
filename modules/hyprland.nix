@@ -102,7 +102,8 @@
           ", XF86MonBrightnessUp, exec, light -A 10"
           ", XF86MonBrightnessDown, exec, light -U 10"
         ];
-        bindm = [ "SUPER, mouse:272, movewindow" ];
+        bindm =
+          [ "SUPER, mouse:272, movewindow" "SUPER, mouse:273, resizewindow" ];
         bind = let
           genWsKeysRec = wsNumber:
             if wsNumber < 1 then
