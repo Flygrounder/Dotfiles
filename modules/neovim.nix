@@ -15,7 +15,7 @@
       programs.nixvim = {
         enable = true;
         autoCmd = [{
-          command = "set conceallevel=2";
+          command = "setlocal conceallevel=2";
           event = [ "BufEnter" "BufWinEnter" ];
           pattern = [ "*.norg" ];
         }];
