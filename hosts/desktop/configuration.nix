@@ -19,6 +19,7 @@
   };
   boot.initrd.kernelModules = [ "amdgpu" ];
   services.xserver.videoDrivers = [ "amdgpu" ];
+  services.hardware.openrgb.enable = true;
   custom = {
     hyprland.enable = true;
     desktop.enable = true;
