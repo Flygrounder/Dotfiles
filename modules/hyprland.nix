@@ -66,6 +66,10 @@
         name = "Papirus-Dark";
         package = pkgs.catppuccin-papirus-folders;
       };
+      cursorTheme = {
+        name = "frappeBlue";
+        package = pkgs.catppuccin-cursors;
+      };
     };
     my.catppuccin.pointerCursor.enable = true;
     my.services.dunst.enable = true;
