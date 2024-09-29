@@ -31,5 +31,6 @@
       fish.enable = true;
       direnv.enable = true;
     };
+    my.home.sessionVariables = { EDITOR = "nvim"; };
   };
 }

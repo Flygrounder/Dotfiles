@@ -13,12 +13,14 @@
     services.gnome.gnome-keyring.enable = true;
     my.home.packages = with pkgs; [
       brave
+      corefonts
       firefox
       jetbrains.idea-community
       libreoffice-still
       nextcloud-client
       pavucontrol
       telegram-desktop
+      vistafonts
       vlc
     ];
     services = { xserver.enable = true; };
