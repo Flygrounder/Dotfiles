@@ -4,7 +4,7 @@
   services.greetd.enable = true;
   programs.regreet.enable = true;
   hardware.ledger.enable = true;
-  my.home.packages = with pkgs; [ ledger-live-desktop monero-gui furmark ];
+  my.home.packages = with pkgs; [ ledger-live-desktop furmark ];
   programs.corectrl.enable = true;
   users.users.flygrounder.extraGroups = [ "corectrl" ];
   users.users.dmitry = {
