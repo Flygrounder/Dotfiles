@@ -13,10 +13,7 @@
 
   nix.settings.trusted-users = [ "flygrounder" ];
 
-  custom = {
-    cli.enable = true;
-    neovim.enable = true;
-  };
+  custom = { cli.enable = true; };
 
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/vda";
