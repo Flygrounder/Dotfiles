@@ -115,6 +115,10 @@
             action = "<cmd>Neorg return<cr>";
             key = "<leader>we";
           }
+          {
+            action = "<cmd>lua vim.lsp.buf.code_action()<cr>";
+            key = "<leader>a";
+          }
         ];
         plugins = {
           vimtex = {
@@ -255,8 +259,15 @@
             };
           };
           surround.enable = true;
-          telescope.enable = true;
+          telescope = {
+            enable = true;
+            extensions = { ui-select.enable = true; };
+          };
           gitsigns.enable = true;
+          nvim-lightbulb = {
+            enable = true;
+            settings = { autocmd = { enabled = true; }; };
+          };
         };
       };
     };
