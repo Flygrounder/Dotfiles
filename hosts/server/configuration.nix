@@ -1,10 +1,9 @@
-{ pkgs, extraModules, ... }:
+{ config, pkgs, extraModules, ... }:
 
 {
   deployment = {
     targetHost = "89.110.91.29";
     targetUser = "flygrounder";
-    keys."drone.secret" = { keyFile = "/etc/nixos/keys/drone.secret"; };
   };
 
   imports = extraModules ++ [ ./hardware-configuration.nix ];
@@ -32,6 +31,7 @@
   virtualisation.podman.dockerSocket.enable = true;
   virtualisation.podman.defaultNetwork.settings.dns_enabled = true;
 
+  age.secrets.drone.file = ../../secrets/drone.age;
   virtualisation.arion = {
     backend = "podman-socket";
     projects.drone-ci = {
@@ -43,7 +43,7 @@
             service = {
               image = "drone/drone:2";
               restart = "unless-stopped";
-              env_file = [ "/run/keys/drone.secret" ];
+              env_file = [ config.age.secrets.drone.path ];
               ports = [ "127.0.0.1:8777:80" ];
               volumes = [ "drone_data:/data" ];
             };
@@ -51,7 +51,7 @@
           drone-runner = {
             service = {
               image = "drone/drone-runner-docker:1";
-              env_file = [ "/run/keys/drone.secret" ];
+              env_file = [ config.age.secrets.drone.path ];
               volumes = [ "/var/run/docker.sock:/var/run/docker.sock" ];
             };
           };

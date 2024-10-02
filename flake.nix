@@ -1,6 +1,10 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     catppuccin.url = "github:catppuccin/nix";
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -15,7 +19,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = { nixpkgs, home-manager, nixvim, arion, catppuccin, ... }:
+  outputs = { nixpkgs, home-manager, nixvim, arion, catppuccin, agenix, ... }:
     let
       system = "x86_64-linux";
       extraModules = [
@@ -47,6 +51,7 @@
           };
         })
         arion.nixosModules.arion
+        agenix.nixosModules.default
         ./modules
       ];
     in {
@@ -70,6 +75,9 @@
       };
       devShells.${system}.default =
         let pkgs = import nixpkgs { inherit system; };
-        in with pkgs; mkShell { buildInputs = [ colmena ]; };
+        in with pkgs;
+        mkShell {
+          buildInputs = [ colmena agenix.packages.${system}.default ];
+        };
     };
 }
