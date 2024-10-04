@@ -32,6 +32,7 @@
   custom = {
     desktop.enable = true;
     neovim.enable = true;
+    gaming.enable = true;
     cli.enable = true;
     hyprland.enable = true;
   };
