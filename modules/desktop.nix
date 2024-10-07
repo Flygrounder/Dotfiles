@@ -29,8 +29,8 @@
       enable = true;
       defaultApplications = {
         "application/pdf" = [ "org.pwmt.zathura.desktop" ];
-        "x-scheme-handler/http" = [ "firefox.desktop" ];
-        "x-scheme-handler/https" = [ "firefox.desktop" ];
+        "x-scheme-handler/http" = [ "brave.desktop" ];
+        "x-scheme-handler/https" = [ "brave.desktop" ];
       };
     };
     my.programs.zathura.enable = true;
