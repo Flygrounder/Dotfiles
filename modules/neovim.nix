@@ -132,7 +132,14 @@
             enable = true;
             settings = {
               default_format_opts = { lsp_format = "fallback"; };
-              format_on_save = { lsp_format = "fallback"; };
+              format_on_save = ''
+                function(bufnr)
+                    local ignore_filetypes = { "scala" }
+                    if vim.tbl_contains(ignore_filetypes, vim.bo[bufnr].filetype) then
+                      return
+                    end
+                    return { lsp_format = "fallback" }
+                  end'';
               formatters_by_ft = let jsConfig = { __unkeyed-1 = "biome"; };
               in {
                 javascript = jsConfig;
@@ -212,6 +219,7 @@
               cssls.enable = true;
               pyright.enable = true;
               gopls.enable = true;
+              metals.enable = true;
               rust-analyzer = {
                 enable = true;
                 installCargo = false;
