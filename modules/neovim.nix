@@ -121,6 +121,7 @@
           }
         ];
         plugins = {
+          web-devicons.enable = true;
           vimtex = {
             enable = true;
             texlivePackage = pkgs.texlive.combined.scheme-full;
@@ -221,7 +222,7 @@
                 settings.formatting.command = [ "nixfmt" ];
               };
               clangd.enable = true;
-              tsserver.enable = true;
+              ts-ls.enable = true;
               yamlls.enable = true;
             };
             keymaps = {
@@ -258,7 +259,7 @@
               patterns = [ ".git" ".project" ];
             };
           };
-          surround.enable = true;
+          vim-surround.enable = true;
           telescope = {
             enable = true;
             extensions = { ui-select.enable = true; };
