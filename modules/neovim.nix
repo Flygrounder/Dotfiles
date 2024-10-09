@@ -135,12 +135,16 @@
               default_format_opts = { lsp_format = "fallback"; };
               format_on_save = ''
                 function(bufnr)
-                    local ignore_filetypes = { "scala" }
-                    if vim.tbl_contains(ignore_filetypes, vim.bo[bufnr].filetype) then
-                      return
-                    end
-                    return { lsp_format = "fallback" }
-                  end'';
+                  local ignore_filetypes_raw = os.getenv("NEOVIM_DISABLE_FORMAT_ON_SAVE_FT") or ""
+                  local ignore_filetypes = {}
+                  for ft in string.gmatch(ignore_filetypes_raw, "([^,]+)") do
+                    table.insert(ignore_filetypes, ft)
+                  end
+                  if vim.tbl_contains(ignore_filetypes, vim.bo[bufnr].filetype) then
+                    return
+                  end
+                  return { lsp_format = "fallback" }
+                end'';
               formatters_by_ft = let jsConfig = { __unkeyed-1 = "biome"; };
               in {
                 javascript = jsConfig;
