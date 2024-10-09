@@ -14,7 +14,6 @@
     my.home.packages = with pkgs; [
       brave
       corefonts
-      firefox
       jetbrains.idea-community
       libreoffice-still
       nextcloud-client

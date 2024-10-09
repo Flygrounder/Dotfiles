@@ -17,7 +17,7 @@
     username = "dmitry";
     homeDirectory = "/home/dmitry";
     stateVersion = "24.05";
-    packages = with pkgs; [ firefox libreoffice-still ];
+    packages = with pkgs; [ brave libreoffice-still ];
   };
   boot.initrd.kernelModules = [ "amdgpu" ];
   services.xserver.videoDrivers = [ "amdgpu" ];
