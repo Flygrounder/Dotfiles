@@ -122,6 +122,7 @@
         ];
         plugins = {
           web-devicons.enable = true;
+          illuminate.enable = true;
           vimtex = {
             enable = true;
             texlivePackage = pkgs.texlive.combined.scheme-full;
@@ -186,6 +187,7 @@
           oil.enable = true;
           harpoon.enable = true;
           direnv.enable = true;
+          fidget.enable = true;
           cmp-nvim-lsp-signature-help.enable = true;
           cmp = {
             enable = true;
