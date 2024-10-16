@@ -7,6 +7,7 @@
   my.home.packages = with pkgs; [ ledger-live-desktop furmark ];
   programs.corectrl.enable = true;
   users.users.flygrounder.extraGroups = [ "corectrl" ];
+  services.jellyfin.enable = true;
   users.users.dmitry = {
     isNormalUser = true;
     description = "Дмитрий";
