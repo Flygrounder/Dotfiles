@@ -10,7 +10,13 @@
           userEmail = "flygrounder@yandex.ru";
           userName = "Artyom Belousov";
         };
-        starship.enable = true;
+        starship = {
+          enable = true;
+          settings = {
+            format =
+              "$directory$git_branch$git_commit$git_state$git_metrics$git_status$cmd_duration$line_break$character";
+          };
+        };
         fish = {
           enable = true;
           functions = { fish_greeting = ""; };
