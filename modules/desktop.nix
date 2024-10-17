@@ -17,6 +17,7 @@
       libreoffice-still
       nextcloud-client
       pavucontrol
+      qbittorrent
       telegram-desktop
       vistafonts
       vlc
