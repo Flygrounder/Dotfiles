@@ -21,6 +21,7 @@
       telegram-desktop
       vistafonts
       vlc
+      zoom-us
     ];
     services = { xserver.enable = true; };
     nixpkgs.config.allowUnfree = true;
