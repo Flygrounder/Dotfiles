@@ -4,6 +4,46 @@
     my = {
       home.packages = with pkgs; [ fastfetch bottom unzip ];
       programs = {
+        yazi = {
+          enable = true;
+          initLua = ''
+            require("bookmarks"):setup({
+            	persist = "all",
+            })
+          '';
+          keymap = {
+            manager.prepend_keymap = [
+              {
+                on = [ "m" ];
+                run = "plugin bookmarks --args=save";
+                desc = "Save current position as a bookmark";
+              }
+              {
+                on = [ "'" ];
+                run = "plugin bookmarks --args=jump";
+                desc = "Jump to a bookmark";
+              }
+              {
+                on = [ "b" "d" ];
+                run = "plugin bookmarks --args=delete";
+                desc = "Delete a bookmark";
+              }
+              {
+                on = [ "b" "D" ];
+                run = "plugin bookmarks --args=delete_all";
+                desc = "Delete all bookmarks";
+              }
+            ];
+          };
+          plugins = {
+            bookmarks = pkgs.fetchFromGitHub {
+              owner = "dedukun";
+              repo = "bookmarks.yazi";
+              rev = "600f87c02176175f55b0571f79c5ff0b1606362f";
+              sha256 = "sha256-pNRRxS4IQO8y8/WSK9s8mNZHEdl1u1cuPfdULxikl7k=";
+            };
+          };
+        };
         git = {
           enable = true;
           extraConfig = { credential.helper = "store"; };
