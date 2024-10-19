@@ -62,7 +62,7 @@
             modules = extraModules ++ [ ./hosts/${host}/configuration.nix ];
           };
       in {
-        desktop = mkSystem "desktop";
+        home = mkSystem "home";
         laptop = mkSystem "laptop";
         nora = mkSystem "work";
       };

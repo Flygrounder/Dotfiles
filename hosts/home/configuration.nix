@@ -1,6 +1,6 @@
 { pkgs, ... }: {
   imports = [ ./hardware-configuration.nix ];
-  networking.hostName = "desktop";
+  networking.hostName = "home";
   services.greetd.enable = true;
   programs.regreet.enable = true;
   hardware.ledger.enable = true;
