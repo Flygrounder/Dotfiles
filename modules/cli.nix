@@ -54,7 +54,7 @@
           enable = true;
           settings = {
             format =
-              "$directory$git_branch$git_commit$git_state$git_metrics$git_status$cmd_duration$line_break$character";
+              "$directory$hostname$git_branch$git_commit$git_state$git_metrics$git_status$cmd_duration$line_break$character";
           };
         };
         fish = {
