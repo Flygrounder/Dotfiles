@@ -31,7 +31,14 @@
   virtualisation.podman.dockerSocket.enable = true;
   virtualisation.podman.defaultNetwork.settings.dns_enabled = true;
 
-  age.secrets.drone.file = ../../secrets/drone.age;
+  age.secrets = {
+    drone.file = ../../secrets/drone.age;
+    nextcloudAdminPass = {
+      file = ../../secrets/nextcloudAdminPass.age;
+      owner = "nextcloud";
+      mode = "600";
+    };
+  };
   virtualisation.arion = {
     backend = "podman-socket";
     projects.drone-ci = {
@@ -83,6 +90,11 @@
           reverse_proxy 127.0.0.1:3234
         '';
       };
+      "cloud.flygrounder.ru" = {
+        extraConfig = ''
+          reverse_proxy 127.0.0.1:8080
+        '';
+      };
     };
   };
 
@@ -108,5 +120,17 @@
   };
 
   networking.nameservers = [ "8.8.8.8" ];
+
+  services.nextcloud = {
+    enable = true;
+    package = pkgs.nextcloud30;
+    hostName = "cloud.flygrounder.ru";
+    config.adminpassFile = config.age.secrets.nextcloudAdminPass.path;
+    settings.overwriteprotocol = "https";
+  };
+  services.nginx.virtualHosts."cloud.flygrounder.ru".listen = [{
+    addr = "127.0.0.1";
+    port = 8080;
+  }];
 }
 

@@ -226,17 +226,17 @@
               pyright.enable = true;
               gopls.enable = true;
               metals.enable = true;
-              rust-analyzer = {
+              rust_analyzer = {
                 enable = true;
                 installCargo = false;
                 installRustc = false;
               };
-              nil-ls = {
+              nil_ls = {
                 enable = true;
                 settings.formatting.command = [ "nixfmt" ];
               };
               clangd.enable = true;
-              ts-ls.enable = true;
+              ts_ls.enable = true;
               yamlls.enable = true;
             };
             keymaps = {
