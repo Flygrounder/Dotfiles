@@ -14,6 +14,7 @@
     my.home.packages = with pkgs; [
       brave
       corefonts
+      jetbrains.idea-community
       libreoffice-still
       nextcloud-client
       pavucontrol
