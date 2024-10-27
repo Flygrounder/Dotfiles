@@ -6,7 +6,7 @@
     users.users.flygrounder = {
       isNormalUser = true;
       description = "Артём";
-      extraGroups = [ "networkmanager" "wheel" "docker" "video" ];
+      extraGroups = [ "networkmanager" "wheel" "docker" "video" "adbusers" ];
     };
     security.sudo.wheelNeedsPassword = false;
     security.polkit.enable = true;
@@ -79,5 +79,6 @@
     };
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
+    programs.adb.enable = true;
   };
 }

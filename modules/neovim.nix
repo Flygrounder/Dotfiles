@@ -129,6 +129,7 @@
             settings = { view_method = "zathura"; };
           };
           comment.enable = true;
+          leap.enable = true;
           conform-nvim = {
             enable = true;
             settings = {
