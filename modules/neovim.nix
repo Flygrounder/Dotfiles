@@ -224,6 +224,7 @@
             enable = true;
             servers = {
               cssls.enable = true;
+              dartls.enable = true;
               pyright.enable = true;
               gopls.enable = true;
               metals.enable = true;
