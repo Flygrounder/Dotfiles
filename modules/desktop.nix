@@ -11,6 +11,10 @@
     security.sudo.wheelNeedsPassword = false;
     security.polkit.enable = true;
     services.gnome.gnome-keyring.enable = true;
+    hardware.bluetooth.enable = true;
+    hardware.bluetooth.powerOnBoot = true;
+    services.blueman.enable = true;
+    my.services.blueman-applet.enable = true;
     my.home.packages = with pkgs; [
       brave
       corefonts
