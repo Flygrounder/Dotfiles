@@ -20,6 +20,7 @@
       corefonts
       jetbrains.idea-community
       libreoffice-still
+      monero-gui
       nextcloud-client
       pavucontrol
       qbittorrent

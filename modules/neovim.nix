@@ -119,8 +119,13 @@
             action = "<cmd>lua vim.lsp.buf.code_action()<cr>";
             key = "<leader>a";
           }
+          {
+            action = "<cmd>MarkdownPreview<cr>";
+            key = "<leader>p";
+          }
         ];
         plugins = {
+          markdown-preview.enable = true;
           web-devicons.enable = true;
           illuminate.enable = true;
           vimtex = {
