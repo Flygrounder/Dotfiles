@@ -11,6 +11,9 @@
         ripgrep
         luajitPackages.lua-utils-nvim
         sqlfluff
+        tinymist
+        websocat
+        typst
       ];
       programs.nixvim = {
         enable = true;
@@ -23,17 +26,23 @@
         globals.maplocalleader = ",";
         clipboard.register = "unnamedplus";
         colorschemes.catppuccin.enable = true;
+        extraConfigLua = ''
+          require 'typst-preview'.setup {
+            dependencies_bin = {
+              ['tinymist'] = 'tinymist',
+              ['websocat'] = 'websocat',
+            },
+          }
+        '';
         extraPlugins = [
           (pkgs.vimUtils.buildVimPlugin {
-            inherit (pkgs.luaPackages.lua-utils-nvim) pname version src;
-          })
-
-          (pkgs.vimUtils.buildVimPlugin {
-            inherit (pkgs.luaPackages.pathlib-nvim) pname version src;
-          })
-
-          (pkgs.vimUtils.buildVimPlugin {
-            inherit (pkgs.luaPackages.nvim-nio) pname version src;
+            name = "typst-preview";
+            src = pkgs.fetchFromGitHub {
+              owner = "chomosuke";
+              repo = "typst-preview.nvim";
+              rev = "06778d1";
+              hash = "sha256-oBJ+G4jTQw6+MF/SMwaTkGlLQuYLbaAFqJkexf45I1g=";
+            };
           })
         ];
         opts = {
@@ -43,6 +52,10 @@
           swapfile = false;
         };
         keymaps = [
+          {
+            action = "<cmd>TypstPreviewToggle<cr>";
+            key = "<leader>p";
+          }
           {
             action = "<cmd>Telescope projects<cr>";
             key = "<leader>sp";
@@ -227,12 +240,17 @@
           luasnip.enable = true;
           lsp = {
             enable = true;
+            inlayHints = true;
+            onAttach = ''
+              client.server_capabilities.semanticTokensProvider = nil
+            '';
             servers = {
               cssls.enable = true;
               dartls.enable = true;
               pyright.enable = true;
               gopls.enable = true;
               metals.enable = true;
+              typst_lsp.enable = true;
               rust_analyzer = {
                 enable = true;
                 installCargo = false;
