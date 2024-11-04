@@ -53,7 +53,14 @@
         };
         keymaps = [
           {
-            action = "<cmd>TypstPreviewToggle<cr>";
+            action.__raw = ''
+              function()
+                if vim.bo.filetype == 'typst' then
+                  vim.cmd [[TypstPreviewToggle]]
+                elseif vim.bo.filetype == 'markdown' then
+                  vim.cmd [[MarkdownPreview]]
+                end
+              end'';
             key = "<leader>p";
           }
           {
@@ -131,10 +138,6 @@
           {
             action = "<cmd>lua vim.lsp.buf.code_action()<cr>";
             key = "<leader>a";
-          }
-          {
-            action = "<cmd>MarkdownPreview<cr>";
-            key = "<leader>p";
           }
         ];
         plugins = {
