@@ -14,6 +14,7 @@
         tinymist
         websocat
         typst
+        typstyle
       ];
       programs.nixvim = {
         enable = true;
@@ -172,6 +173,7 @@
                 javascript = jsConfig;
                 typescript = jsConfig;
                 typescriptreact = jsConfig;
+                typst = { __unkeyed-1 = "typstyle"; };
               };
               formatters = { biome = { command = "biome"; }; };
             };
