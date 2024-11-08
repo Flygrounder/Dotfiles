@@ -250,11 +250,13 @@
               client.server_capabilities.semanticTokensProvider = nil
             '';
             servers = {
+              biome.enable = true;
               cssls.enable = true;
               dartls.enable = true;
               pyright.enable = true;
               gopls.enable = true;
               metals.enable = true;
+              tailwindcss.enable = true;
               typst_lsp.enable = true;
               rust_analyzer = {
                 enable = true;
