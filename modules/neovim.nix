@@ -145,11 +145,6 @@
           markdown-preview.enable = true;
           web-devicons.enable = true;
           illuminate.enable = true;
-          vimtex = {
-            enable = true;
-            texlivePackage = pkgs.texlive.combined.scheme-full;
-            settings = { view_method = "zathura"; };
-          };
           comment.enable = true;
           leap.enable = true;
           conform-nvim = {
