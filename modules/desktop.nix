@@ -20,6 +20,7 @@
       corefonts
       jetbrains.idea-community
       libreoffice-still
+      mkvtoolnix-cli
       monero-gui
       nextcloud-client
       pavucontrol

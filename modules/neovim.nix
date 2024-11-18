@@ -142,6 +142,11 @@
           }
         ];
         plugins = {
+          vimtex = {
+            enable = true;
+            texlivePackage = pkgs.texlive.combined.scheme-full;
+            settings = { view_method = "zathura"; };
+          };
           markdown-preview.enable = true;
           web-devicons.enable = true;
           illuminate.enable = true;
