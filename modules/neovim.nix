@@ -51,6 +51,9 @@
           ignorecase = true;
           smartcase = true;
           swapfile = false;
+          expandtab = true;
+          shiftwidth = 4;
+          tabstop = 4;
         };
         keymaps = [
           {
