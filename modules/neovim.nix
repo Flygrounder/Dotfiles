@@ -23,8 +23,11 @@
           event = [ "BufEnter" "BufWinEnter" ];
           pattern = [ "*.norg" ];
         }];
-        globals.mapleader = " ";
-        globals.maplocalleader = ",";
+        globals = {
+          mapleader = " ";
+          maplocalleader = ",";
+          zig_fmt_autosave = 0;
+        };
         clipboard.register = "unnamedplus";
         colorschemes.catppuccin.enable = true;
         extraConfigLua = ''
