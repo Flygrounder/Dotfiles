@@ -6,7 +6,8 @@
     users.users.flygrounder = {
       isNormalUser = true;
       description = "Артём";
-      extraGroups = [ "networkmanager" "wheel" "docker" "video" "adbusers" ];
+      extraGroups =
+        [ "networkmanager" "wheel" "docker" "video" "adbusers" "vboxusers" ];
     };
     security.sudo.wheelNeedsPassword = false;
     security.polkit.enable = true;
@@ -24,6 +25,7 @@
       monero-gui
       nextcloud-client
       pavucontrol
+      thunderbird
       qbittorrent
       telegram-desktop
       vistafonts
@@ -31,6 +33,7 @@
       zoom-us
     ];
     services = { xserver.enable = true; };
+    virtualisation.virtualbox.host.enable = true;
     nixpkgs.config.allowUnfree = true;
     my.xdg.mimeApps = {
       enable = true;
