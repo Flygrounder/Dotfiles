@@ -1,12 +1,4 @@
 { ... }: {
-  imports = [
-    ./hyprland.nix
-    ./qtile.nix
-    ./neovim.nix
-    ./nvidia.nix
-    ./desktop.nix
-    ./hp-printer.nix
-    ./cli.nix
-    ./gaming.nix
-  ];
+  imports =
+    [ ./hyprland.nix ./neovim.nix ./desktop.nix ./hp-printer.nix ./cli.nix ];
 }

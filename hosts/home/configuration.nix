@@ -27,7 +27,6 @@
     hyprland.enable = true;
     desktop.enable = true;
     cli.enable = true;
-    gaming.enable = true;
     hp-printer.enable = true;
     neovim.enable = true;
   };
