@@ -70,27 +70,22 @@
   services.caddy = {
     enable = true;
     virtualHosts = {
-      "chipollino.flygrounder.ru" = {
+      "chipollino.flygrounder.dev" = {
         extraConfig = ''
           reverse_proxy 127.0.0.1:8000
         '';
       };
-      "ci.flygrounder.ru" = {
+      "ci.flygrounder.dev" = {
         extraConfig = ''
           reverse_proxy 127.0.0.1:8777
         '';
       };
-      "mtg-price-bot.flygrounder.ru" = {
+      "mtg-price-bot.flygrounder.dev" = {
         extraConfig = ''
           reverse_proxy 127.0.0.1:3000
         '';
       };
-      "dota2-esports-bot.flygrounder.ru" = {
-        extraConfig = ''
-          reverse_proxy 127.0.0.1:3234
-        '';
-      };
-      "cloud.flygrounder.ru" = {
+      "cloud.flygrounder.dev" = {
         extraConfig = ''
           reverse_proxy 127.0.0.1:8080
         '';
@@ -124,11 +119,11 @@
   services.nextcloud = {
     enable = true;
     package = pkgs.nextcloud30;
-    hostName = "cloud.flygrounder.ru";
+    hostName = "cloud.flygrounder.dev";
     config.adminpassFile = config.age.secrets.nextcloudAdminPass.path;
     settings.overwriteprotocol = "https";
   };
-  services.nginx.virtualHosts."cloud.flygrounder.ru".listen = [{
+  services.nginx.virtualHosts."cloud.flygrounder.dev".listen = [{
     addr = "127.0.0.1";
     port = 8080;
   }];
