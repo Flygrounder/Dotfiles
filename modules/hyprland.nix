@@ -168,7 +168,7 @@
           ];
           clock = { format = " {:%d.%m.%Y %H:%M}"; };
           "custom/logo" = {
-            format = "";
+            format = "";
             class = "logo";
           };
           battery = {
