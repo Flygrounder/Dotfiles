@@ -31,8 +31,7 @@
           no_fade_in = false;
         };
 
-        background =
-          [{ path = "/home/flygrounder/.wallpapers/nix-black.png"; }];
+        background = [{ path = "/home/flygrounder/.wallpapers/halo.jpg"; }];
 
         input-field = [{
           size = "400, 50";
@@ -205,12 +204,11 @@
     };
     my.services.hyprpaper = {
       enable = true;
-      settings =
-        let wallpaperPath = "/home/flygrounder/.wallpapers/nix-black.png";
-        in {
-          preload = wallpaperPath;
-          wallpaper = ", ${wallpaperPath}";
-        };
+      settings = let wallpaperPath = "/home/flygrounder/.wallpapers/halo.jpg";
+      in {
+        preload = wallpaperPath;
+        wallpaper = ", ${wallpaperPath}";
+      };
     };
     environment.sessionVariables.NIXOS_OZONE_WL = "1";
   };
