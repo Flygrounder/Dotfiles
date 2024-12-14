@@ -273,7 +273,14 @@
               gopls.enable = true;
               metals.enable = true;
               tailwindcss.enable = true;
-              typst_lsp.enable = true;
+              tinymist = {
+                enable = true;
+                rootDir = {
+                  __raw = ''
+                    require('lspconfig.util').root_pattern({'.project', '.git'}) 
+                  '';
+                };
+              };
               rust_analyzer = {
                 enable = true;
                 installCargo = false;
