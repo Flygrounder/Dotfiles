@@ -19,10 +19,10 @@
     my.home.packages = with pkgs; [
       brave
       corefonts
+      feather
       jetbrains.idea-community
       libreoffice-still
       mkvtoolnix-cli
-      monero-gui
       nextcloud-client
       pavucontrol
       thunderbird

@@ -3,8 +3,8 @@
   networking.hostName = "home";
   services.greetd.enable = true;
   programs.regreet.enable = true;
-  hardware.ledger.enable = true;
-  my.home.packages = with pkgs; [ ledger-live-desktop furmark ];
+  services.monero.enable = true;
+  my.home.packages = with pkgs; [ furmark ];
   programs.corectrl.enable = true;
   users.users.flygrounder.extraGroups = [ "corectrl" ];
   users.users.dmitry = {
