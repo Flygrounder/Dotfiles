@@ -39,8 +39,8 @@
             bookmarks = pkgs.fetchFromGitHub {
               owner = "dedukun";
               repo = "bookmarks.yazi";
-              rev = "600f87c02176175f55b0571f79c5ff0b1606362f";
-              sha256 = "sha256-pNRRxS4IQO8y8/WSK9s8mNZHEdl1u1cuPfdULxikl7k=";
+              rev = "20ece7e1ef3c8180f199cc311f187b662662bc87";
+              sha256 = "sha256-CpoHpYAeMuSn5Sfaq30vzTj/ukrUjtXI0zZioJLnWqw=";
             };
           };
         };

@@ -167,7 +167,6 @@
           web-devicons.enable = true;
           illuminate.enable = true;
           comment.enable = true;
-          leap.enable = true;
           conform-nvim = {
             enable = true;
             settings = {
