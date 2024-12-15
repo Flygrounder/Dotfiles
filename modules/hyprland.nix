@@ -138,8 +138,8 @@
           "$mainMod, m, fullscreen, 1"
           "$mainMod SHIFT, J, swapnext, "
           "$mainMod SHIFT, K, swapnext, prev"
-          ", Print, exec, mkdir -p Изображения/Скриншоты && slurp | grim -g - - | wl-copy && wl-paste > ~/Изображения/Скриншоты/Screenshot-$(date +%F_%T).png | dunstify 'Сделан области сохранён' -t 1000"
-          "SHIFT, Print, exec, mkdir -p Изображения/Скриншоты && grim - | wl-copy && wl-paste > ~/Изображения/Скриншоты/Screenshot-$(date +%F_%T).png | dunstify 'Снимок всего экрана сохранён' -t 1000"
+          ", Print, exec, mkdir -p Изображения/Скриншоты && slurp | grim -g - - | wl-copy && wl-paste > ~/Изображения/Скриншоты/Screenshot-$(date +%F_%T).png | dunstify 'Снимок области сохранён' -t 1000"
+          "SHIFT, Print, exec, mkdir -p Изображения/Скриншоты && grim -o $(hyprctl monitors | rg 'Monitor (\\S+)' -or '$1') - | wl-copy && wl-paste > ~/Изображения/Скриншоты/Screenshot-$(date +%F_%T).png | dunstify 'Снимок всего экрана сохранён' -t 1000"
 
         ] ++ wsKeys;
       };
