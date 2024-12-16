@@ -89,5 +89,6 @@
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
     programs.adb.enable = true;
+    programs.steam.enable = true;
   };
 }
