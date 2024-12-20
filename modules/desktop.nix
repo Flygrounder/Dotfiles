@@ -20,6 +20,7 @@
       brave
       corefonts
       feather
+      insomnia
       jetbrains.idea-community
       libreoffice-still
       mkvtoolnix-cli
