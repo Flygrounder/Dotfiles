@@ -4,7 +4,7 @@
     my = {
       home.packages = with pkgs; [
         biome
-        fira-code-nerdfont
+        nerd-fonts.fira-code
         nixfmt-classic
         wl-clipboard
         xclip
@@ -195,7 +195,7 @@
           };
           neorg = {
             enable = true;
-            modules = {
+            settings.load = {
               "core.defaults" = { __empty = null; };
               "core.export" = { __empty = null; };
               "core.export.markdown" = { __empty = null; };

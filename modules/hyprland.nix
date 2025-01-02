@@ -94,7 +94,10 @@
         input = {
           kb_layout = "us,ru";
           kb_options = "grp:alt_shift_toggle";
-          touchpad = { natural_scroll = true; };
+          touchpad = {
+            natural_scroll = true;
+            disable_while_typing = false;
+          };
         };
         gestures = { workspace_swipe = true; };
         master = { mfact = 0.5; };
